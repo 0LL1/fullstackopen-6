@@ -6,7 +6,14 @@ const Notification = ({ store }) => {
     padding: 10,
     borderWidth: 1
   }
-  return <div style={style}>{store.getState().notification}</div>
+
+  const notification = store.getState().notification
+
+  if (notification === null) {
+    return null
+  }
+
+  return <div style={style}>{notification}</div>
 }
 
 export default Notification
