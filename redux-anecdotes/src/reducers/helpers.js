@@ -38,3 +38,10 @@ export const hideNotification = () => {
     type: 'HIDE_NOTIFICATION'
   }
 }
+
+export const filterAnecdotes = text => {
+  return {
+    type: 'FILTER',
+    text
+  }
+}

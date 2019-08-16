@@ -3,6 +3,12 @@ import { vote, hideNotification } from '../reducers/helpers'
 
 const AnecdoteList = ({ store }) => {
   const anecdotes = store.getState().anecdotes
+  const filter = store.getState().filter
+
+  const anecdotesToShow = () =>
+    anecdotes.filter(anecdote =>
+      anecdote.content.toLowerCase().includes(filter.toLowerCase())
+    )
 
   const addVote = anecdote => {
     store.dispatch(vote(anecdote))
@@ -12,13 +18,14 @@ const AnecdoteList = ({ store }) => {
 
   return (
     <div>
-      {anecdotes.map(anecdote => (
+      {anecdotesToShow().map(anecdote => (
         <div key={anecdote.id}>
-          <div>{anecdote.content}</div>
-          <div>
-            has {anecdote.votes}
+          <p>{anecdote.content}</p>
+          <p>
+            {anecdote.votes} votes
             <button onClick={() => addVote(anecdote)}>vote</button>
-          </div>
+          </p>
+          <br />
         </div>
       ))}
     </div>
