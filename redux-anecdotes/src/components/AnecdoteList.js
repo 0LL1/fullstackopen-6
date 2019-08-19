@@ -1,19 +1,17 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { vote, hideNotification } from '../reducers/helpers'
 
-const AnecdoteList = ({ store }) => {
-  const anecdotes = store.getState().anecdotes
-  const filter = store.getState().filter
-
+const AnecdoteList = ({ anecdotes, filter, vote, hideNotification }) => {
   const anecdotesToShow = () =>
     anecdotes.filter(anecdote =>
       anecdote.content.toLowerCase().includes(filter.toLowerCase())
     )
 
   const addVote = anecdote => {
-    store.dispatch(vote(anecdote))
+    vote(anecdote)
 
-    setTimeout(() => store.dispatch(hideNotification()), 5000)
+    setTimeout(() => hideNotification(), 5000)
   }
 
   return (
@@ -32,4 +30,21 @@ const AnecdoteList = ({ store }) => {
   )
 }
 
-export default AnecdoteList
+const mapStateToProps = ({ anecdotes, filter }) => {
+  return {
+    anecdotes,
+    filter
+  }
+}
+
+const mapDispatchToProps = {
+  vote,
+  hideNotification
+}
+
+const connectedAnecdoteList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AnecdoteList)
+
+export default connectedAnecdoteList
