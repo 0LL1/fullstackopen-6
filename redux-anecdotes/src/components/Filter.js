@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { filterAnecdotes } from '../reducers/helpers'
+import { filterAnecdotes } from '../actions'
 
 const Filter = ({ filterAnecdotes }) => {
   const handleChange = event => {

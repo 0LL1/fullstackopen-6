@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { vote, hideNotification } from '../reducers/helpers'
+import { vote, hideNotification } from '../actions'
 
 const AnecdoteList = ({ anecdotesToShow, vote, hideNotification }) => {
   const addVote = anecdote => {
