@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { vote, hideNotification } from '../actions'
+import { vote, setNotification } from '../actions'
 
-const AnecdoteList = ({ anecdotesToShow, vote, hideNotification }) => {
+const AnecdoteList = ({ anecdotesToShow, vote, setNotification }) => {
   const addVote = anecdote => {
     vote(anecdote)
 
-    setTimeout(() => hideNotification(), 5000)
+    setNotification(`You voted '${anecdote.content}'`, 5)
   }
 
   return (
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   vote,
-  hideNotification
+  setNotification
 }
 
 const connectedAnecdoteList = connect(

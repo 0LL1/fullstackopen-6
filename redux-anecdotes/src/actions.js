@@ -22,12 +22,6 @@ export const createAnecdote = content => {
   }
 }
 
-export const hideNotification = () => {
-  return {
-    type: 'HIDE_NOTIFICATION'
-  }
-}
-
 export const filterAnecdotes = text => {
   return {
     type: 'FILTER',
@@ -42,5 +36,20 @@ export const initializeAnecdotes = () => {
       type: 'INIT_ANECDOTES',
       anecdotes
     })
+  }
+}
+
+export const setNotification = (notification, time) => {
+  return async dispatch => {
+    dispatch({
+      type: 'SET_NOTIFICATION',
+      notification
+    })
+
+    const timeout = time * 1000
+
+    setTimeout(() => {
+      dispatch({ type: 'HIDE_NOTIFICATION' })
+    }, timeout)
   }
 }
