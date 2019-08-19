@@ -16,7 +16,7 @@ const anecdoteReducer = (state = [], action) => {
     case 'NEW_ANECDOTE':
       return [...state, action.data]
     case 'INIT_ANECDOTES':
-      return action.anecdotes
+      return action.anecdotes.sort((a, b) => b.votes - a.votes)
     default:
       return state
   }
