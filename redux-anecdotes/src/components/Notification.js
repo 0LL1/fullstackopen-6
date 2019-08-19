@@ -15,11 +15,7 @@ const Notification = ({ notification }) => {
   return <div style={style}>{notification}</div>
 }
 
-const mapStateToProps = ({ notification }) => {
-  return {
-    notification
-  }
-}
+const mapStateToProps = ({ notification }) => ({ notification })
 
 const connectedNotification = connect(mapStateToProps)(Notification)
 

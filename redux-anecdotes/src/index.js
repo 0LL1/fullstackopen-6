@@ -10,7 +10,7 @@ import filterReducer from './reducers/filterReducer'
 const reducer = combineReducers({
   anecdotes: anecdoteReducer,
   notification: notificationReducer,
-  filter: filterReducer
+  textFilter: filterReducer
 })
 
 const store = createStore(reducer)
